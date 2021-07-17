@@ -1,20 +1,20 @@
 env:
     CIRRUS_CLONE_DEPTH: 1
-    BUILD_HOSTNAME: "cirrus-ci.org"
+    BUILD_HOSTNAME: "ak"
     bot_api: "ENCRYPTED[b16032643ad0994cda4822c9d477956f434278d0f786f8e131b585aa4f8510a11f3cd9f6a66a63568d2cba1c4dde25b4]"
 
 
 task:
   name: Test
   skip: $CIRRUS_BRANCH == 'main'
-  only_if: $CIRRUS_REPO_OWNER == 'ROM-builders'
+  only_if: $CIRRUS_REPO_OWNER == 'Ankits-lab'
   timeout_in: 30m
   persistent_worker:
     labels:
-      name: AX61-2
+      name: ak
     isolation:
       container:
-        image: apon77/aosp:cirrus
+        image: aarunalr/aosp-build
         cpu: 2
         memory: 4G
 
@@ -42,15 +42,15 @@ task:
   only_if: $CIRRUS_REPO_OWNER == 'ROM-builders'
   depends_on:
     - Test
-  timeout_in: 4h
+  timeout_in: 7h
   persistent_worker:
     labels:
-      name: AX61-1
+      name: ak
     isolation:
       container:
-        image: apon77/aosp:cirrus
-        cpu: 24
-        memory: 60G
+        image: aarunalr/aosp-build
+        cpu: 8
+        memory: 28G
         volumes:
           - /home/cirrus/roms:/home/cirrus/roms
           - /home/cirrus/ccache:/home/cirrus/ccache
@@ -122,17 +122,17 @@ task:
 task:
   name: Post Build
   skip: $CIRRUS_BRANCH == 'main'
-  only_if: $CIRRUS_REPO_OWNER == 'ROM-builders'
+  only_if: $CIRRUS_REPO_OWNER == 'Ankits-lab'
   skip_notifications: true
   depends_on:
     - Build
   timeout_in: 30m
   persistent_worker:
     labels:
-      name: AX61-2
+      name: ak
     isolation:
       container:
-        image: apon77/aosp:cirrus
+        image: aarunalr/aosp-build
         cpu: 2
         memory: 4G
 
