@@ -13,7 +13,7 @@ task:
       name: ak
     isolation:
       container:
-        image: aarunalr/aosp-build
+        image: apon77/aosp:cirrus
         cpu: 2
         memory: 4G
 
@@ -47,7 +47,7 @@ task:
       name: ak
     isolation:
       container:
-        image: aarunalr/aosp-build
+        image: apon77/aosp:cirrus
         cpu: 8
         memory: 28G
         volumes:
@@ -131,7 +131,7 @@ task:
       name: ak
     isolation:
       container:
-        image: aarunalr/aosp-build
+        image: apon77/aosp:cirrus
         cpu: 2
         memory: 4G
 
