@@ -2,8 +2,7 @@ env:
     CIRRUS_CLONE_DEPTH: 1
     BUILD_HOSTNAME: "ak"
     bot_api: "ENCRYPTED[5841801178484a8aa0f412210e7e109304b184fd1a1c754d882ee9bae52067acbca348430fa2a335429de490b830729f]"
-
-
+    
 task:
   name: Test
   skip: $CIRRUS_BRANCH == 'main'
@@ -34,12 +33,12 @@ task:
       $show" -d "chat_id=${your_telegram_id}" -d "parse_mode=HTML"
   test_script:
     - set -e
-    - curl -Ls https://github.com/ROM-builders/temporary/raw/main/test.sh | bash
+    - curl -Ls https://raw.githubusercontent.com/Ankits-lab/trail2/main/test.sh | bash
 
 task:
   name: Build
   skip: $CIRRUS_BRANCH == 'main'
-  only_if: $CIRRUS_REPO_OWNER == 'ROM-builders'
+  only_if: $CIRRUS_REPO_OWNER == 'Ankits-lab'
   depends_on:
     - Test
   timeout_in: 7h
